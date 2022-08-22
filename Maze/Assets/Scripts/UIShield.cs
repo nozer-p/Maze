@@ -26,12 +26,12 @@ public class UIShield : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     private void Start()
     {
         timeBtwTap = startTimeBtwTap;
-        player = FindObjectOfType<PlayerMovement>();
         isHold = false;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
+        player = FindObjectOfType<PlayerMovement>();
         if (player != null)
         {
             if (isHold)

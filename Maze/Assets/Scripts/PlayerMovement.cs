@@ -7,41 +7,67 @@ public class PlayerMovement : MonoBehaviour
 {
     private Camera camera;
     private NavMeshAgent agent;
+    private float speed;
     [SerializeField] private GameObject finish;
 
     [SerializeField] private GameObject prefabEffDead;
+    [SerializeField] private GameObject prefabEffWin;
+    [SerializeField] private float offsetY;
 
     private bool shield;
     private MeshRenderer render;
     [SerializeField] private Material standartMaterial;
     [SerializeField] private Material shieldMaterial;
 
+    private bool isWin;
+    private GameObject winConfetti;
+
     private void Start()
     {
+        isWin = false;
         camera = Camera.main;
         render = GetComponent<MeshRenderer>();
         agent = GetComponent<NavMeshAgent>();
+        speed = agent.speed;
     }
 
     private void Update()
     {
-        if (finish != null)
+        if (isWin)
+        {
+            DampingScreen damping = FindObjectOfType<DampingScreen>();
+            if (damping != null)
+            {
+                damping.OnState();
+
+                if (!winConfetti)
+                {
+                    Application.LoadLevel(Application.loadedLevel);
+                }
+            }
+        }
+
+        if (finish != null && agent != null)
         {
             agent.SetDestination(finish.transform.position);
         }
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Finish")
         {
-            Debug.Log("Win");
+            winConfetti = Instantiate(prefabEffWin, new Vector3(transform.position.x, transform.position.y + offsetY, transform.position.z), Quaternion.identity);
+            isWin = true;
         }
-        
+    }
+
+    private void OnTriggerStay(Collider other)
+    {        
         if (other.gameObject.tag == "DeadZone" && !shield)
         {
+            Instantiate(prefabEffDead, new Vector3(transform.position.x, transform.position.y + offsetY, transform.position.z), Quaternion.identity);
             Destroy(this.gameObject);
-            Debug.Log("Lose");
         }
     }
 
@@ -55,5 +81,15 @@ public class PlayerMovement : MonoBehaviour
     {
         shield = false;
         render.material = standartMaterial;
+    }
+
+    public void StopPlayer()
+    {
+        if (agent != null) agent.speed = 0f;
+    }
+
+    public void UnStopPlayer()
+    {
+        if (agent != null) agent.speed = speed;
     }
 }
