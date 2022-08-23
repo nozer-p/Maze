@@ -12,8 +12,6 @@ public class UIPause : MonoBehaviour
     private void Start()
     {
         damping = FindObjectOfType<DampingScreen>();
-        play.SetActive(false);
-        exit.SetActive(false);
     }
 
     private void Update()
@@ -27,7 +25,6 @@ public class UIPause : MonoBehaviour
         {
             damping.OnState();
             player.StopPlayer();
-            gameObject.SetActive(false);
             play.SetActive(true);
             exit.SetActive(true);
         }

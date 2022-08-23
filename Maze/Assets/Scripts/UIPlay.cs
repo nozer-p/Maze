@@ -12,8 +12,6 @@ public class UIPlay : MonoBehaviour
     private void Start()
     {
         damping = FindObjectOfType<DampingScreen>();
-        pause.SetActive(true);
-        exit.SetActive(true);
     }
 
     private void Update()

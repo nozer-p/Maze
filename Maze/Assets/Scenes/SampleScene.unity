@@ -329,7 +329,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &340666043
 GameObject:
@@ -624,7 +624,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f252fb8272936ac45931110260eba835, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startTimeBtwTap: 3.2
+  startTimeBtwTap: 3.1
 --- !u!1 &536816682
 GameObject:
   m_ObjectHideFlags: 0
@@ -715,7 +715,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &615268928
 GameObject:
@@ -1586,7 +1586,7 @@ RectTransform:
   - {fileID: 2000888716}
   - {fileID: 1260214424}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2249,10 +2249,10 @@ RectTransform:
   m_Father: {fileID: 1298879153}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.000030517578}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 3000, y: 2000}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2080575124
 MonoBehaviour:
@@ -2269,7 +2269,7 @@ MonoBehaviour:
   speed: 0.7
   playerPrefab: {fileID: 1638391207162820534, guid: 44a4923c2f57ce6489b093744425e99b, type: 3}
   spawnPlayer: {x: -13.25, y: 1, z: -7.25}
-  startTime: 2.7
+  startTime: 2.75
 --- !u!114 &2080575125
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2535,7 +2535,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3962893215622440733, guid: 76fbd188d49171f49b8cd185f52fbbe4, type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 3962893215622440733, guid: 76fbd188d49171f49b8cd185f52fbbe4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2588,7 +2588,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6835472976830322208, guid: b41d7bffbd240f2448c45e1dcd5363b2, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6835472976830322208, guid: b41d7bffbd240f2448c45e1dcd5363b2, type: 3}
       propertyPath: m_LocalPosition.x
