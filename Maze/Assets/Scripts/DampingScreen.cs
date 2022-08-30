@@ -8,32 +8,27 @@ public class DampingScreen : MonoBehaviour
     private Image panel;
 
     private bool state;
-    private bool restart;
-    private bool up_down;
+    //private bool restart;
+    //private bool up_down;
 
     [SerializeField] private float speed;
     private float speedOld;
-    
-    private PlayerMovement player;
-    [SerializeField] private GameObject playerPrefab;
-    [SerializeField] private Vector3 spawnPlayer;
 
-    private float time;
-    [SerializeField] float startTime;
+    private PlayerMovement player;
+
+    //private float time;
+    //[SerializeField] float startTime;
 
     private void Start()
     {
-        time = startTime;
+        //time = startTime;
         speedOld = 1f;
 
         panel = GetComponent<Image>();
         panel.color = new Color(Color.black.r, Color.black.g, Color.black.b, speedOld);
-        
-        CheckPlayer();
-        player.StopPlayer();
-        
-        restart = false;
-        up_down = false;
+
+        //restart = false;
+        //up_down = false;
     }
 
     public void OnState()
@@ -48,21 +43,18 @@ public class DampingScreen : MonoBehaviour
 
     public void RestartLevel()
     {
-        restart = true;
+        //restart = true;
     }
 
-    private void CheckPlayer()
+    private bool CheckPlayer()
     {
         player = FindObjectOfType<PlayerMovement>();
-        if (player == null)
-        {
-            restart = true;
-            panel.enabled = true;
-        }
+        return (player == null) ? false : true;
     }
 
     private void FixedUpdate()
     {
+        /*
         if (restart)
         {
             if (panel.color.a > 0.99f && !up_down)
@@ -75,7 +67,7 @@ public class DampingScreen : MonoBehaviour
                 up_down = true;
             }
 
-            if (panel.color.a < 0.15f && up_down)
+            if (panel.color.a < 0.2f && up_down)
             {
                 speedOld = 0f;
                 up_down = false;
@@ -98,7 +90,7 @@ public class DampingScreen : MonoBehaviour
                 restart = false;
                 time = startTime;
                 panel.enabled = false;
-                player.UnStopPlayer();
+                if (player != null) player.UnStopPlayer();
             }
             else
             {
@@ -107,7 +99,7 @@ public class DampingScreen : MonoBehaviour
         }
         else
         {
-            if (state && panel.color.a < 0.5f)
+            if (state && panel.color.a < 0.7f)
             {
                 panel.enabled = true;
                 player.StopPlayer();
@@ -140,5 +132,34 @@ public class DampingScreen : MonoBehaviour
         }
 
         CheckPlayer();
+        */
+
+        if (CheckPlayer())
+        {
+            if (state && panel.color.a < 0.7f)
+            {
+                panel.enabled = true;
+                player.StopPlayer();
+                speedOld += speed * Time.deltaTime;
+                panel.color = new Color(Color.black.r, Color.black.g, Color.black.b, speedOld);
+            }
+
+            if (!state && panel.color.a > 0f)
+            {
+                panel.enabled = true;
+                player.StopPlayer();
+
+                speedOld -= speed * Time.deltaTime;
+
+                if (speedOld <= 0f)
+                {
+                    panel.enabled = false;
+                    player.UnStopPlayer();
+                    speedOld = 0f;
+                }
+
+                panel.color = new Color(Color.black.r, Color.black.g, Color.black.b, speedOld);
+            }
+        }
     }
 }

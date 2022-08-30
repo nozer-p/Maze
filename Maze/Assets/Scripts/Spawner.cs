@@ -35,12 +35,12 @@ public class Spawner : MonoBehaviour
 
             if (rand > 4)
             {
-                if (Mathf.Abs(randZ) >= 4.5f)
+                if (Mathf.Abs(randZ) >= 3.5f)
                 {
                     Instantiate(deadZone, new Vector3(spawnDeadZones[i].position.x, spawnDeadZones[i].position.y, randZ), Quaternion.identity);
                     Instantiate(deadZone, new Vector3(spawnDeadZones[i].position.x, spawnDeadZones[i].position.y, -randZ), Quaternion.identity);
                 }
-                else if (rand > 7)
+                else
                 {
                     Instantiate(deadZone, new Vector3(spawnDeadZones[i].position.x, spawnDeadZones[i].position.y, randZ), Quaternion.identity);
                 }

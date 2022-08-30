@@ -49,10 +49,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   walls:
   - {fileID: 7817062936402911348, guid: adaeb56771f00e347a3977868a50b3e3, type: 3}
   - {fileID: 5810392756873450020, guid: 69add988ffbae7d4da49971250f53912, type: 3}
@@ -66,9 +62,6 @@ MonoBehaviour:
   - {fileID: 6940064204343422178, guid: 5ecc02f7ee7320242b62f94aa5b9f42f, type: 3}
   - {fileID: 7807123163292162183, guid: e2292264b8fcca542805e02bdcf24de8, type: 3}
   spawnDeadZones:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

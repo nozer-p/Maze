@@ -118,6 +118,8 @@ MonoBehaviour:
   offsetY: 2
   standartMaterial: {fileID: 2100000, guid: abe386602bb2cda429ba09b1a6d05c06, type: 2}
   shieldMaterial: {fileID: 2100000, guid: d15dc47df9f8aae4dbf99985e2f95601, type: 2}
+  playerPrefab: {fileID: 1638391207162820534}
+  spawnPlayer: {x: -7.25, y: 1, z: -7.25}
 --- !u!195 &1638391207162820536
 NavMeshAgent:
   m_ObjectHideFlags: 0

@@ -19,6 +19,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Material standartMaterial;
     [SerializeField] private Material shieldMaterial;
 
+
+    [SerializeField] private GameObject playerPrefab;
+    [SerializeField] private Vector3 spawnPlayer;
+
     private bool isWin;
     private GameObject winConfetti;
 
@@ -33,8 +37,14 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        if (isWin)
+        if (isWin && (agent.pathEndPosition - transform.position).magnitude <= 0.62f)
         {
+            if (!winConfetti)
+            {
+                Application.LoadLevel(Application.loadedLevel);
+            }
+
+            /*
             DampingScreen damping = FindObjectOfType<DampingScreen>();
             if (damping != null)
             {
@@ -45,6 +55,8 @@ public class PlayerMovement : MonoBehaviour
                     Application.LoadLevel(Application.loadedLevel);
                 }
             }
+            */
+
         }
 
         if (finish != null && agent != null)
@@ -67,6 +79,7 @@ public class PlayerMovement : MonoBehaviour
         if (other.gameObject.tag == "DeadZone" && !shield)
         {
             Instantiate(prefabEffDead, new Vector3(transform.position.x, transform.position.y + offsetY, transform.position.z), Quaternion.identity);
+            Instantiate(playerPrefab, spawnPlayer, Quaternion.identity);
             Destroy(this.gameObject);
         }
     }
